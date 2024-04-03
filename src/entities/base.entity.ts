@@ -1,10 +1,23 @@
-/**
- * 数据库建表基类，实现了一些所有表都要有的字段
- */
 import { Exclude } from 'class-transformer';
-import { Column, PrimaryGeneratedColumn } from 'typeorm';
+import {
+  Column,
+  CreateDateColumn,
+  PrimaryGeneratedColumn,
+  UpdateDateColumn,
+} from 'typeorm';
 
 @Exclude()
 export abstract class BaseEntity {
-  
+  @Column({
+    type: 'bigint',
+    length: 20,
+  })
+  @PrimaryGeneratedColumn()
+  id: number;
+
+  @CreateDateColumn({ type: 'timestamp', select: false, name: 'create_time' })
+  createTime: Date;
+
+  @UpdateDateColumn({ type: 'timestamp', select: false, name: 'update_time' })
+  updateTime: Date;
 }

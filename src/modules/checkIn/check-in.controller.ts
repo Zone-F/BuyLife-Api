@@ -7,17 +7,21 @@ import {
   // Delete,
   // Put,
 } from '@nestjs/common';
-import { CheckInService } from './checkIn.service'; // 确保服务的路径正确
-import { CheckInDTO, CreateTaskDTO } from '@/dto/checkIn.dto'; // 确保DTO的路径正确
+import { CheckInService } from './service/check-in.service';
+import { CheckInTaskService } from './service/check-in-task.service';
+import { CheckInDTO, CreateTaskDTO } from '@/modules/checkIn/dto/check-in.dto'; // 确保DTO的路径正确
 
 @Controller('check-in')
 export class CheckInController {
-  constructor(private readonly checkInService: CheckInService) {}
+  constructor(
+    private readonly checkInService: CheckInService,
+    private readonly checkInTaskService: CheckInTaskService,
+  ) {}
 
   // 新增打卡任务
   @Post('task')
   async addCheckInTask(@Body() taskDto: CreateTaskDTO) {
-    return await this.checkInService.addCheckInTask(taskDto);
+    return await this.checkInTaskService.createCheckInTask(taskDto);
   }
 
   // // 如果需要，为了撤销打卡，可以由PUT方法实现状态的反转

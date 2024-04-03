@@ -1,8 +1,9 @@
 // src/entities/product.entity.ts
 import { Entity, PrimaryGeneratedColumn, Column } from 'typeorm';
+import { BaseEntity } from './base.entity';
 
 @Entity()
-export class Product {
+export class Product extends BaseEntity {
   @PrimaryGeneratedColumn()
   id: number; // 产品唯一标识符
 
@@ -29,6 +30,7 @@ export class Product {
     stock: number,
     image?: string,
   ) {
+    super();
     this.name = name;
     this.description = description;
     this.pointsCost = pointsCost;

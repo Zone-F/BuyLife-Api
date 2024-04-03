@@ -9,11 +9,12 @@ import {
 } from 'typeorm';
 import { User } from './user.entity'; // 假设你有一个User实体
 import { RepeatCycle } from '@/common/enums/repeatCycle.enum';
+import { BaseEntity } from './base.entity';
 
 @Entity({ name: 'check_ins' })
-export class CheckIn {
-  @PrimaryGeneratedColumn()
-  id: number;
+export class CheckIn extends BaseEntity {
+  // @PrimaryGeneratedColumn()
+  // id: number;
 
   // @ManyToOne(() => CheckInTask, (checkInTask) => checkInTask.id, {
   //   onDelete: 'CASCADE', // 或者其他你需要的onDelete option
@@ -31,10 +32,13 @@ export class CheckIn {
 
   @CreateDateColumn({ type: 'timestamp' })
   checkInTime: Date;
+
+  @Column({ type: 'timestamp', name: 'expiry_time' })
+  expiryTime: Date;
 }
 
 @Entity({ name: 'check_in_tasks' })
-export class CheckInTask {
+export class CheckInTask extends BaseEntity {
   @PrimaryGeneratedColumn()
   id: number;
 
@@ -45,11 +49,11 @@ export class CheckInTask {
   // userId: User;
 
   @Column({ name: 'user_id' })
-  userId:number;
+  userId: number;
 
-  @CreateDateColumn({ type: 'timestamp' })
-  @Column({ name: 'created_at', type: 'timestamp' })
-  createdTime: Date;
+  // @CreateDateColumn({ type: 'timestamp' })
+  // @Column({ name: 'create_time', type: 'timestamp' })
+  // createTime: Date;
 
   @Column({ type: 'text' })
   description: string;
