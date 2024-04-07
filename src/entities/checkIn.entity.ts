@@ -3,11 +3,11 @@ import {
   Entity,
   PrimaryGeneratedColumn,
   Column,
-  ManyToOne,
+  // ManyToOne,
   CreateDateColumn,
-  JoinColumn,
+  // JoinColumn,
 } from 'typeorm';
-import { User } from './user.entity'; // 假设你有一个User实体
+// import { User } from './user.entity'; // 假设你有一个User实体
 import { RepeatCycle } from '@/common/enums/repeatCycle.enum';
 import { BaseEntity } from './base.entity';
 

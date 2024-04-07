@@ -2,9 +2,9 @@ import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
 import { CheckIn, CheckInTask } from '@/entities/checkIn.entity'; // 假设你已经创建了CheckIn实体
-import { CheckInDTO } from '@/modules/checkIn/dto/check-in.dto';
-import { RepeatCycle } from '@/common/enums/repeatCycle.enum';
-import { CreateTaskDTO } from '../dto/check-in-task.dto';
+// import { CheckInDTO } from '@/modules/checkIn/dto/check-in.dto';
+// import { RepeatCycle } from '@/common/enums/repeatCycle.enum';
+// import { CreateTaskDTO } from '../dto/check-in-task.dto';
 
 @Injectable()
 export class CheckInService {

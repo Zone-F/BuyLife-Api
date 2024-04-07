@@ -1,7 +1,7 @@
 import { Test } from '@nestjs/testing';
 import { getRepositoryToken } from '@nestjs/typeorm';
 import { CheckInTaskService } from './service/check-in-task.service';
-import { CheckInTask } from '@/entities/checkIn.entity';
+import { CheckIn, CheckInTask } from '@/entities/checkIn.entity';
 import { Repository } from 'typeorm';
 import { RepeatCycle } from '@/common/enums/repeatCycle.enum';
 
@@ -14,6 +14,7 @@ describe('CheckInTaskService', () => {
       providers: [
         CheckInTaskService,
         { provide: getRepositoryToken(CheckInTask), useClass: Repository },
+        { provide: getRepositoryToken(CheckIn), useClass: Repository },
       ],
     }).compile();
 
@@ -24,12 +25,12 @@ describe('CheckInTaskService', () => {
   });
 
   describe('addCheckInTask', () => {
-    const repeat: RepeatCycle = 'DAILY' as RepeatCycle;
     it('should save and return a check in task', async () => {
       const checkInTask = {
         id: 1,
         title: 'Test Check In Task',
-        repeatCycle: 'DAILY' as RepeatCycle,
+        RepeatCycle: RepeatCycle.DAILY,
+        // repeatCycle: 'DAILY' as RepeatCycle,
       };
 
       jest
@@ -40,7 +41,7 @@ describe('CheckInTaskService', () => {
         title: checkInTask.title,
         description: 'Test Description',
         startDate: new Date(),
-        repeatCycle: 'DAILY' as RepeatCycle,
+        repeatCycle: RepeatCycle.DAILY,
         userId: 1,
       });
 
@@ -59,7 +60,7 @@ describe('CheckInTaskService', () => {
           title: 'Test Check In Task',
           description: 'Test Description',
           startDate: new Date(),
-          repeatCycle: repeat,
+          repeatCycle: RepeatCycle.DAILY,
           userId: 1,
         });
       } catch (e) {

@@ -1,7 +1,7 @@
 // src/entities/user.entity.ts
-import { Entity, PrimaryGeneratedColumn, Column, OneToMany } from 'typeorm';
-import { CheckIn } from './check-in.entity';
-import { PurchaseHistory } from './purchase-history.entity';
+import { Entity, PrimaryGeneratedColumn, Column } from 'typeorm';
+// import { CheckIn } from './check-in.entity';
+// import { PurchaseHistory } from './purchase-history.entity';
 import { BaseEntity } from './base.entity';
 
 @Entity()
@@ -21,9 +21,9 @@ export class User extends BaseEntity {
   @Column('int', { default: 0 })
   points: number;
 
-  @OneToMany(() => CheckIn, (checkIn) => checkIn.user)
-  checkIns: CheckIn[];
+  // @OneToMany(() => CheckIn, (checkIn) => checkIn.user)
+  // checkIns: CheckIn[];
 
-  @OneToMany(() => PurchaseHistory, (purchaseHistory) => purchaseHistory.user)
-  purchases: PurchaseHistory[];
+  // @OneToMany(() => PurchaseHistory, (purchaseHistory) => purchaseHistory.user)
+  // purchases: PurchaseHistory[];
 }

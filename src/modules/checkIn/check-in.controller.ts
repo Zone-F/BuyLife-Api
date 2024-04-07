@@ -9,7 +9,8 @@ import {
 } from '@nestjs/common';
 import { CheckInService } from './service/check-in.service';
 import { CheckInTaskService } from './service/check-in-task.service';
-import { CheckInDTO, CreateTaskDTO } from '@/modules/checkIn/dto/check-in.dto'; // 确保DTO的路径正确
+import { CheckInDTO } from '@/modules/checkIn/dto/check-in.dto'; // 确保DTO的路径正确
+import { CreateTaskDTO } from './dto/check-in-task.dto';
 
 @Controller('check-in')
 export class CheckInController {
@@ -32,7 +33,8 @@ export class CheckInController {
 
   @Post()
   async createCheckIn(@Body() checkInDTO: CheckInDTO) {
-    return await this.checkInService.createCheckIn(checkInDTO);
+    console.log(checkInDTO);
+    // return await this.checkInService.createCheckIn(checkInDTO);
   }
 
   // @Get(':userId')
