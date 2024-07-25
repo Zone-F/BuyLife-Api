@@ -1,0 +1,29 @@
+spring:
+  datasource:
+    url: jdbc:mysql://127.0.0.1:3306/buylife?useUnicode=true&characterEncoding=utf-8&serverTimezone=GMT%2b8
+    username: root
+    password: 123456
+#    driver-class-name: com.mysql.jdbc.Driver
+
+## springdoc-openapi????
+#springdoc:
+#  swagger-ui:
+#    path: /swagger-ui.html
+#    # ????????
+#    tags-sorter: alpha
+#    # ????order???????????????( @ApiOperationSupport(order = n)????)
+#    operations-sorter: order
+#  api-docs:
+#    path: /v3/api-docs
+#  group-configs:
+#    #????????
+#    - group: 'default'
+#      paths-to-match: '/**'
+#      # controller???
+#      packages-to-scan: com.knifej.test.controller
+#
+## knife4j???????????????
+#knife4j:
+#  enable: true
+#  setting:
+#    language: zh_cn
