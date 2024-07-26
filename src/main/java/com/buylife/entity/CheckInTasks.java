@@ -1,5 +1,6 @@
 package com.buylife.entity;
 
+import java.io.Serial;
 import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
@@ -20,6 +21,7 @@ import lombok.Data;
 @Schema(name = "CheckInTasks", description = "打卡任务表")
 public class CheckInTasks implements Serializable {
 
+    @Serial
     private static final long serialVersionUID = 1L;
 
     @Schema(description = "唯一标识每个任务的自增主键")

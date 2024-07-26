@@ -1,5 +1,6 @@
 package com.buylife.controller;
 
+import com.buylife.common.ResponseResult;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.Parameter;
 import io.swagger.v3.oas.annotations.media.Content;
@@ -125,12 +126,16 @@ public class UsersController {
             )
         }
     )
+//    @PostMapping
+//    public ResponseEntity<Boolean> insert(@Validated @RequestBody Users users) {
+//        boolean result = usersService.insert(users);
+//        return ResponseEntity.ok(result);
+//    }
     @PostMapping
-    public ResponseEntity<Boolean> insert(@Validated @RequestBody Users users) {
+    public ResponseResult<Boolean> insert(@Validated @RequestBody Users users) {
         boolean result = usersService.insert(users);
-        return ResponseEntity.ok(result);
+        return ResponseResult.success();
     }
-
     /**
      * 修改
      *
