@@ -1,5 +1,6 @@
 package com.buylife.entity;
 
+import java.io.Serial;
 import java.io.Serializable;
 import java.util.Date;
 import com.baomidou.mybatisplus.annotation.TableName;
@@ -21,6 +22,7 @@ import lombok.Data;
 @Schema(name = "Users", description = "用户信息表")
 public class Users implements Serializable {
 
+    @Serial
     private static final long serialVersionUID = 1L;
 
     @Schema(description = "唯一标识每个用户的自增主键")
@@ -39,7 +41,7 @@ public class Users implements Serializable {
     private String email;
 
     @Schema(description = "用户密码，需经过加密处理")
-    @NotBlank(message = "【用户密码，需经过加密处理】不能为空")
+    @NotNull(message = "【用户密码，需经过加密处理】不能为空")
     @Size(min = 8, max = 128, message = "【用户密码】长度应在8到128个字符之间")
     private String password;
 

@@ -8,6 +8,7 @@ import io.swagger.v3.oas.annotations.media.Schema;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.security.SecurityRequirement;
 import io.swagger.v3.oas.annotations.tags.Tag;
+import javax.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.annotation.Validated;
@@ -27,6 +28,7 @@ import java.util.List;
 @RestController
 @RequestMapping("/api/users")
 @Tag(name = "用户信息表控制器")
+//@Validated
 public class UsersController {
 
     @Autowired
@@ -126,13 +128,8 @@ public class UsersController {
             )
         }
     )
-//    @PostMapping
-//    public ResponseEntity<Boolean> insert(@Validated @RequestBody Users users) {
-//        boolean result = usersService.insert(users);
-//        return ResponseEntity.ok(result);
-//    }
     @PostMapping
-    public ResponseResult<Boolean> insert(@Validated @RequestBody Users users) {
+    public ResponseResult<Boolean> insert(@Valid @RequestBody Users users) {
         boolean result = usersService.insert(users);
         return ResponseResult.success();
     }
