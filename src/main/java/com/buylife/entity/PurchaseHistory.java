@@ -4,7 +4,8 @@ import java.io.Serializable;
 import java.util.Date;
 import com.baomidou.mybatisplus.annotation.TableName;
 import io.swagger.v3.oas.annotations.media.Schema;
-import javax.validation.constraints.NotNull;
+
+import jakarta.validation.constraints.NotNull;
 import lombok.Data;
 
 /**

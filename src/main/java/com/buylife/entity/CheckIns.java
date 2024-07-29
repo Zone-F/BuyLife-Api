@@ -1,11 +1,13 @@
 package com.buylife.entity;
 
+import java.io.Serial;
 import java.io.Serializable;
 import java.util.Date;
 import com.baomidou.mybatisplus.annotation.TableName;
 import io.swagger.v3.oas.annotations.media.Schema;
-import javax.validation.constraints.NotBlank;
 
+
+import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 import lombok.Data;
 
@@ -20,6 +22,7 @@ import lombok.Data;
 @Schema(name = "CheckIns", description = "打卡记录表")
 public class CheckIns implements Serializable{
 
+    @Serial
     private static final long serialVersionUID=1L;
 
     @Schema(description = "打卡记录的唯一标识")
