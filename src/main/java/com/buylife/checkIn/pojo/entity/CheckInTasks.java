@@ -1,4 +1,4 @@
-package com.buylife.entity;
+package com.buylife.checkIn.pojo.entity;
 
 import java.io.Serial;
 import java.io.Serializable;
@@ -20,7 +20,7 @@ import lombok.Data;
  */
 @Data
 @TableName("check_in_tasks")
-@Schema(name = "CheckInTasks", description = "打卡任务表")
+//@Schema(name = "CheckInTasks", description = "打卡任务表")
 public class CheckInTasks implements Serializable {
 
     @Serial

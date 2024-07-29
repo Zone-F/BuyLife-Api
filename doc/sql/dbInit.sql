@@ -2,7 +2,7 @@
 CREATE DATABASE IF NOT EXISTS BuyLife;
 USE BuyLife;
 
--- 创建用户表
+-- 用户表
 CREATE TABLE IF NOT EXISTS users (
     id Bigint AUTO_INCREMENT PRIMARY KEY COMMENT '唯一标识每个用户的自增主键',
     username VARCHAR(255) NOT NULL COMMENT '用户的昵称或姓名，用于登录和展示',
@@ -12,7 +12,7 @@ CREATE TABLE IF NOT EXISTS users (
     update_time TIMESTAMP NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT '数据更新的时间戳'
 ) ENGINE=InnoDB COMMENT='用户信息表';
 
--- 创建打卡任务表
+-- 打卡任务表
 CREATE TABLE IF NOT EXISTS check_in_tasks (
     id Bigint AUTO_INCREMENT PRIMARY KEY COMMENT '唯一标识每个任务的自增主键',
     user_id Bigint NOT NULL COMMENT '与用户表相关联的外键，标识创建任务的用户',
@@ -21,13 +21,13 @@ CREATE TABLE IF NOT EXISTS check_in_tasks (
     point INT NOT NULL COMMENT '任务积分',
     status INT NOT NULL DEFAULT 1 COMMENT '任务状态：1活跃，0关闭',
     start_date DATE NOT NULL COMMENT '任务开始执行的日期',
-    repeat_cycle ENUM('daily', 'weekly', 'monthly', 'yearly') NOT NULL COMMENT '任务重复的周期类型',
+    repeat_cycle ENUM('1', '2', '3', '4') NOT NULL COMMENT '任务重复的周期类型',
     create_time TIMESTAMP DEFAULT CURRENT_TIMESTAMP COMMENT '数据创建的时间戳',
     update_time TIMESTAMP NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT '数据更新的时间戳',
     FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE CASCADE
 ) ENGINE=InnoDB COMMENT='打卡任务表';
 
--- 创建打卡记录表
+-- 打卡记录表
 CREATE TABLE IF NOT EXISTS check_ins (
     id Bigint AUTO_INCREMENT PRIMARY KEY COMMENT '打卡记录的唯一标识',
     task_id Bigint NOT NULL COMMENT '关联打卡任务表的外键',
@@ -41,7 +41,7 @@ CREATE TABLE IF NOT EXISTS check_ins (
     FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE CASCADE
 ) ENGINE=InnoDB COMMENT='打卡记录表';
 
--- 创建积分记录表
+-- 积分记录表
 CREATE TABLE IF NOT EXISTS point_records (
     id Bigint AUTO_INCREMENT PRIMARY KEY COMMENT '积分记录的唯一标识',
     user_id Bigint NOT NULL COMMENT '关联用户表的外键',
@@ -54,7 +54,7 @@ CREATE TABLE IF NOT EXISTS point_records (
     FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE CASCADE
 ) ENGINE=InnoDB COMMENT='积分记录表';
 
--- 创建商品表
+-- 商品表
 CREATE TABLE IF NOT EXISTS items (
     id Bigint AUTO_INCREMENT PRIMARY KEY COMMENT '商品ID',
     user_id Bigint COMMENT '用户ID',
@@ -67,7 +67,7 @@ CREATE TABLE IF NOT EXISTS items (
     FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE SET NULL
 ) ENGINE=InnoDB COMMENT='商品表';
 
--- 创建用户购买历史表
+-- 用户购买历史
 CREATE TABLE IF NOT EXISTS purchase_history (
     id Bigint AUTO_INCREMENT PRIMARY KEY COMMENT '购买记录ID',
     user_id Bigint NOT NULL COMMENT '用户ID',

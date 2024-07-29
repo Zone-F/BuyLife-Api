@@ -1,19 +1,19 @@
-package com.buylife.controller;
+package com.buylife.checkIn.controller;
 
+import com.buylife.checkIn.pojo.dto.CreateCheckInTasksDTO;
+import com.buylife.common.ResponseResult;
 import io.swagger.v3.oas.annotations.Operation;
-import io.swagger.v3.oas.annotations.Parameter;
 import io.swagger.v3.oas.annotations.media.Content;
 import io.swagger.v3.oas.annotations.media.Schema;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
-import io.swagger.v3.oas.annotations.security.SecurityRequirement;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
-import com.buylife.entity.CheckInTasks;
-import com.buylife.service.CheckInTasksService;
+import com.buylife.checkIn.pojo.entity.CheckInTasks;
+import com.buylife.checkIn.service.CheckInTasksService;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import java.util.List;
 
@@ -64,9 +64,9 @@ public class CheckInTasksController {
         }
     )
     @PostMapping("/list")
-    public ResponseEntity<List<CheckInTasks>> findList(@RequestBody CheckInTasks params) {
+    public ResponseResult<List<CheckInTasks>> findList(@RequestBody CheckInTasks params) {
         List<CheckInTasks> result = checkInTasksService.findList(params);
-        return ResponseEntity.ok(result);
+        return ResponseResult.success(result);
     }
 
     /**
@@ -83,9 +83,9 @@ public class CheckInTasksController {
         }
     )
     @GetMapping("/{id}")
-    public ResponseEntity<CheckInTasks> findById(@PathVariable("id") Long id) {
+    public ResponseResult<CheckInTasks> findById(@PathVariable("id") Long id) {
         CheckInTasks checkInTasks = checkInTasksService.findById(id);
-        return ResponseEntity.ok(checkInTasks);
+        return ResponseResult.success(checkInTasks);
     }
 
     /**
@@ -102,9 +102,9 @@ public class CheckInTasksController {
         }
     )
     @PostMapping
-    public ResponseEntity<Boolean> insert(@Validated @RequestBody CheckInTasks checkInTasks) {
+    public ResponseResult<Boolean> insert(@Validated @RequestBody CreateCheckInTasksDTO checkInTasks) {
         boolean result = checkInTasksService.insert(checkInTasks);
-        return ResponseEntity.ok(result);
+        return ResponseResult.success();
     }
 
     /**
@@ -121,9 +121,9 @@ public class CheckInTasksController {
         }
     )
     @PutMapping
-    public ResponseEntity<Boolean> update(@Validated @RequestBody CheckInTasks checkInTasks) {
-        boolean result = checkInTasksService.update(checkInTasks);
-        return ResponseEntity.ok(result);
+    public ResponseResult<Boolean> update(@Validated @RequestBody CheckInTasks checkInTasks) {
+        checkInTasksService.update(checkInTasks);
+        return ResponseResult.success();
     }
 
     /**

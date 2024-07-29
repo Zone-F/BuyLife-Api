@@ -67,10 +67,12 @@ public class GlobalExceptionHandler {
         return ResponseResult.fail(message);
     }
 
+    /**
+     * 参数校验异常
+     */
     @ExceptionHandler(MethodArgumentNotValidException.class)
     @ResponseStatus(HttpStatus.BAD_REQUEST)
     public ResponseResult handleMethodArgumentNotValidException(MethodArgumentNotValidException e) {
-        log.error(e.getMessage(), e);
         Optional<FieldError> fieldError = e.getBindingResult().getFieldErrors().stream().findFirst();
         String message = fieldError.map(FieldError::getDefaultMessage).orElse(e.getMessage());
         return ResponseResult.fail(message);

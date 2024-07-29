@@ -1,12 +1,14 @@
-package com.buylife.service.impl;
+package com.buylife.checkIn.service.impl;
 
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.baomidou.mybatisplus.core.toolkit.Wrappers;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
-import com.buylife.mapper.CheckInTasksMapper;
-import com.buylife.entity.CheckInTasks;
-import com.buylife.service.CheckInTasksService;
+import com.buylife.checkIn.pojo.dto.CreateCheckInTasksDTO;
+import com.buylife.checkIn.service.CheckInTasksService;
+import com.buylife.checkIn.mapper.CheckInTasksMapper;
+import com.buylife.checkIn.pojo.entity.CheckInTasks;
+import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import lombok.extern.slf4j.Slf4j;
@@ -42,7 +44,9 @@ public class CheckInTasksServiceImpl extends ServiceImpl<CheckInTasksMapper, Che
     }
 
     @Override
-    public boolean insert(CheckInTasks checkInTasks) {
+    public boolean insert(CreateCheckInTasksDTO createCheckInTasksDTO) {
+        CheckInTasks checkInTasks = new CheckInTasks();
+        BeanUtils.copyProperties(createCheckInTasksDTO, checkInTasks);
         return save(checkInTasks);
     }
 
