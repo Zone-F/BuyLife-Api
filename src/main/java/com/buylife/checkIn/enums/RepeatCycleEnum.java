@@ -10,27 +10,27 @@ public enum RepeatCycleEnum {
     /**
      * 每天
      */
-    DAILY("1", "daily"),
+    DAILY(1, "daily"),
 
     /**
      * 每周
      */
-    WEEKLY("2", "weekly"),
+    WEEKLY(2, "weekly"),
 
     /**
      * 每月
      */
-    MONTHLY("3", "monthly"),
+    MONTHLY(3, "monthly"),
 
     /**
      * 每年
      */
-    YEARLY("4", "yearly");
+    YEARLY(4, "yearly");
 
-    private final String code;
+    private final int code;
     private final String value;
 
-    RepeatCycleEnum(String code, String value) {
+    RepeatCycleEnum(int code, String value) {
         this.code = code;
         this.value = value;
     }

@@ -1,6 +1,6 @@
-package com.buylife.service;
+package com.buylife.user.service;
 
-import com.buylife.entity.Users;
+import com.buylife.user.pojo.entity.Users;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.baomidou.mybatisplus.extension.service.IService;
 

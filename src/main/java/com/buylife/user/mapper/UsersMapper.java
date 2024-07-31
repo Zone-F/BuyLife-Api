@@ -1,7 +1,7 @@
-package com.buylife.mapper;
+package com.buylife.user.mapper;
 
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
-import com.buylife.entity.Users;
+import com.buylife.user.pojo.entity.Users;
 import org.apache.ibatis.annotations.Mapper;
 /**
  * 用户信息表

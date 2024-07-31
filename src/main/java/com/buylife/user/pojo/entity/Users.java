@@ -1,4 +1,4 @@
-package com.buylife.entity;
+package com.buylife.user.pojo.entity;
 
 import java.io.Serial;
 import java.io.Serializable;

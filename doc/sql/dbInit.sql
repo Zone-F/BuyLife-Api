@@ -21,7 +21,7 @@ CREATE TABLE IF NOT EXISTS check_in_tasks (
     point INT NOT NULL COMMENT '任务积分',
     status INT NOT NULL DEFAULT 1 COMMENT '任务状态：1活跃，0关闭',
     start_date DATE NOT NULL COMMENT '任务开始执行的日期',
-    repeat_cycle ENUM('1', '2', '3', '4') NOT NULL COMMENT '任务重复的周期类型',
+    repeat_cycle INT COMMENT '任务重复的周期类型',
     create_time TIMESTAMP DEFAULT CURRENT_TIMESTAMP COMMENT '数据创建的时间戳',
     update_time TIMESTAMP NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT '数据更新的时间戳',
     FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE CASCADE

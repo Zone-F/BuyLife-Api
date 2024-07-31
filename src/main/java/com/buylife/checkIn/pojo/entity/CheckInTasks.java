@@ -4,6 +4,9 @@ import java.io.Serial;
 import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
+
+import com.baomidou.mybatisplus.annotation.IdType;
+import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
 import io.swagger.v3.oas.annotations.media.Schema;
 
@@ -28,6 +31,7 @@ public class CheckInTasks implements Serializable {
 
     @Schema(description = "唯一标识每个任务的自增主键")
     @NotNull(message = "【唯一标识每个任务的自增主键】不能为空")
+    @TableId(value = "id", type = IdType.AUTO)
     private Integer id;
 
     @Schema(description = "与用户表相关联的外键，标识创建任务的用户")
@@ -56,7 +60,7 @@ public class CheckInTasks implements Serializable {
 
     @Schema(description = "任务重复的周期类型")
     @NotNull(message = "【任务重复的周期类型】不能为空")
-    private List<String> repeatCycle; // 假设repeatCycle是字符串列表
+    private Integer repeatCycle; // 假设repeatCycle是字符串列表
 
     @Schema(description = "数据创建的时间戳")
     @NotNull(message = "【数据创建的时间戳】不能为空")

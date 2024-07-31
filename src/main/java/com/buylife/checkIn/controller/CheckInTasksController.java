@@ -8,7 +8,6 @@ import io.swagger.v3.oas.annotations.media.Schema;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.ResponseEntity;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
@@ -45,9 +44,9 @@ public class CheckInTasksController {
         }
     )
     @PostMapping("/page")
-    public ResponseEntity<Page<CheckInTasks>> findPage(@RequestBody CheckInTasks params) {
+    public ResponseResult<Page<CheckInTasks>> findPage(@RequestBody CheckInTasks params) {
         Page<CheckInTasks> result = checkInTasksService.findPage(params);
-        return ResponseEntity.ok(result);
+        return ResponseResult.success(result);
     }
 
     /**
@@ -140,9 +139,9 @@ public class CheckInTasksController {
         }
     )
     @DeleteMapping("/{id}")
-    public ResponseEntity<Integer> delete(@PathVariable("id") Long id) {
+    public ResponseResult<Integer> delete(@PathVariable("id") Long id) {
         int result = checkInTasksService.delete(id);
-        return ResponseEntity.ok(result);
+        return ResponseResult.success();
     }
 
 }

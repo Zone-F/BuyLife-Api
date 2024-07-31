@@ -1,9 +1,9 @@
-package com.buylife.controller;
+package com.buylife.user.controller;
 
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.buylife.common.ResponseResult;
-import com.buylife.entity.Users;
-import com.buylife.service.UsersService;
+import com.buylife.user.pojo.entity.Users;
+import com.buylife.user.service.UsersService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.Parameter;
 import io.swagger.v3.oas.annotations.media.Content;

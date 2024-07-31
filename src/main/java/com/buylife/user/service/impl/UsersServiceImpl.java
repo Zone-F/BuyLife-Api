@@ -1,13 +1,13 @@
-package com.buylife.service.impl;
+package com.buylife.user.service.impl;
 
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.baomidou.mybatisplus.core.toolkit.Wrappers;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.buylife.common.exception.CustomException;
-import com.buylife.mapper.UsersMapper;
-import com.buylife.entity.Users;
-import com.buylife.service.UsersService;
+import com.buylife.user.mapper.UsersMapper;
+import com.buylife.user.pojo.entity.Users;
+import com.buylife.user.service.UsersService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import lombok.extern.slf4j.Slf4j;
