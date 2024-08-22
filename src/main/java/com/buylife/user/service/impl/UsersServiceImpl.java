@@ -45,18 +45,19 @@ public class UsersServiceImpl extends ServiceImpl<UsersMapper, Users> implements
 @Override
 public boolean insert(Users users) {
     // 使用LambdaQueryWrapper查询数据库中是否已存在相同的用户名
-    LambdaQueryWrapper<Users> queryWrapper = Wrappers.lambdaQuery();
-    queryWrapper.eq(Users::getUsername, users.getUsername());
-
-    // 执行查询，如果结果不为空，说明用户名已存在
-    Users existingUser = this.getOne(queryWrapper);
-    if (existingUser != null) {
-        // 可以在这里抛出异常，或者直接返回false表示插入失败
-        throw new CustomException(200,"用户名已存在");
-    }
-
-    // 如果用户名不存在，则继续执行插入操作
-    return save(users);
+//    LambdaQueryWrapper<Users> queryWrapper = Wrappers.lambdaQuery();
+//    queryWrapper.eq(Users::getUsername, users.getUsername());
+//
+//    // 执行查询，如果结果不为空，说明用户名已存在
+//    Users existingUser = this.getOne(queryWrapper);
+//    if (existingUser != null) {
+//        // 可以在这里抛出异常，或者直接返回false表示插入失败
+//        throw new CustomException(200,"用户名已存在");
+//    }
+//
+//    // 如果用户名不存在，则继续执行插入操作
+//    return save(users);
+    return true ;
 }
 
 

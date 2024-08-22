@@ -1,6 +1,7 @@
-package com.buylife.service;
+package com.buylife.checkIn.service;
 
-import com.buylife.entity.CheckIns;
+import com.buylife.checkIn.pojo.dto.CheckInDTO;
+import com.buylife.checkIn.pojo.entity.CheckIns;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.baomidou.mybatisplus.extension.service.IService;
 
@@ -17,7 +18,7 @@ public interface CheckInsService extends IService<CheckIns> {
 
     CheckIns findById(Long id);
 
-    boolean insert(CheckIns checkIns);
+    boolean insert(CheckInDTO checkIns);
 
     boolean update(CheckIns checkIns);
 

@@ -1,5 +1,6 @@
 package com.buylife.entity;
 
+import java.io.Serial;
 import java.io.Serializable;
 import java.util.Date;
 import com.baomidou.mybatisplus.annotation.TableName;
@@ -21,6 +22,7 @@ import lombok.Data;
 @Schema(name = "Items", description = "商品表")
 public class Items implements Serializable {
 
+    @Serial
     private static final long serialVersionUID = 1L;
 
     @Schema(description = "商品ID")

@@ -1,9 +1,9 @@
-package com.buylife.controller;
+package com.buylife.checkIn.controller;
 
+import com.buylife.checkIn.pojo.dto.CheckInDTO;
+import com.buylife.common.ResponseResult;
 import io.swagger.v3.oas.annotations.Operation;
-import io.swagger.v3.oas.annotations.Parameter;
 import io.swagger.v3.oas.annotations.media.Content;
-import io.swagger.v3.oas.annotations.media.Schema;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,8 +11,8 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
-import com.buylife.entity.CheckIns;
-import com.buylife.service.CheckInsService;
+import com.buylife.checkIn.pojo.entity.CheckIns;
+import com.buylife.checkIn.service.CheckInsService;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import java.util.List;
 
@@ -101,9 +101,9 @@ public class CheckInsController {
         }
     )
     @PostMapping
-    public ResponseEntity<Boolean> insert(@Validated @RequestBody CheckIns checkIns) {
+    public ResponseResult<Boolean> insert(@Validated @RequestBody CheckInDTO checkIns) {
         boolean result = checkInsService.insert(checkIns);
-        return ResponseEntity.ok(result);
+        return ResponseResult.success(result);
     }
 
     /**

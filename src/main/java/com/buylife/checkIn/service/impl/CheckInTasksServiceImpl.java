@@ -23,7 +23,7 @@ import java.util.List;
 public class CheckInTasksServiceImpl extends ServiceImpl<CheckInTasksMapper, CheckInTasks> implements CheckInTasksService {
 
     @Autowired
-    private CheckInTasksMapper checkInTasksMapper;
+    CheckInTasksMapper checkInTasksMapper;
 
     @Override
     public Page<CheckInTasks> findPage(CheckInTasks params) {

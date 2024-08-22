@@ -1,7 +1,7 @@
-package com.buylife.mapper;
+package com.buylife.checkIn.mapper;
 
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
-import com.buylife.entity.CheckIns;
+import com.buylife.checkIn.pojo.entity.CheckIns;
 import org.apache.ibatis.annotations.Mapper;
 /**
  * 打卡记录表

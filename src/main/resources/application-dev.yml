@@ -7,5 +7,13 @@ spring:
     url: jdbc:mysql://127.0.0.1:3306/buylife?useUnicode=true&characterEncoding=utf-8&serverTimezone=GMT%2b8
     username: root
     password: 123456
-#    driver-class-name: com.mysql.jdbc.Driver
+
+application:
+  security:
+    jwt:
+      secret-key: VUhJT0pJT0hVWUlHRFVGVFdPSVJISVVHWUZHVkRVR0RISVVIREJZI1VJSEZTVUdZR0ZTVVk=
+      expiration: 86400000 # 1天
+      refresh-token:
+        expiration: 604800000 # 7 天
+
 
