@@ -1,4 +1,4 @@
-package com.buylife.security.security.auth;
+package com.buylife.security.auth;
 
 
 import io.swagger.v3.oas.annotations.media.Schema;

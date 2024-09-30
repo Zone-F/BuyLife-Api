@@ -1,4 +1,4 @@
-package com.buylife.security.security.config;
+package com.buylife.security.config;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.buylife.security.utils.Result;

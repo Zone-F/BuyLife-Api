@@ -1,4 +1,4 @@
-package com.buylife.security.security.auth;
+package com.buylife.security.auth;
 
 import com.buylife.security.utils.Result;
 import io.swagger.v3.oas.annotations.Operation;
@@ -19,17 +19,17 @@ import java.io.IOException;
 @Tag(name = "Authentication")
 public class AuthenticationController {
 
-  private final com.buylife.security.security.auth.AuthenticationService authenticationService;
+  private final AuthenticationService authenticationService;
 
   @PostMapping("/register")
   @Operation(summary = "注册")
-  public Result register(@RequestBody com.buylife.security.security.auth.RegisterRequest request){
+  public Result register(@RequestBody RegisterRequest request){
     return authenticationService.register(request);
   }
 
   @PostMapping("/authenticate")
   @Operation(summary = "认证")
-  public Result authenticate(@RequestBody com.buylife.security.security.auth.AuthenticationRequest request){
+  public Result authenticate(@RequestBody AuthenticationRequest request){
     return authenticationService.authenticate(request);
   }
 

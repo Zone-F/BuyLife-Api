@@ -2,7 +2,6 @@ package com.buylife.security.config;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.authentication.AuthenticationProvider;
 import org.springframework.security.config.annotation.method.configuration.EnableMethodSecurity;
@@ -14,8 +13,8 @@ import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 import org.springframework.security.web.authentication.logout.LogoutHandler;
 
-import static com.buylife.security.entity.Permission.*;
-import static com.buylife.security.entity.Role.*;
+import static com.buylife.security.enums.Permission.*;
+import static com.buylife.security.enums.Role.*;
 import static org.springframework.http.HttpMethod.*;
 
 @Configuration
@@ -24,11 +23,11 @@ import static org.springframework.http.HttpMethod.*;
 @EnableMethodSecurity
 public class SecurityConfiguration {
 
-  private final com.buylife.security.security.config.JwtAuthenticationFilter jwtAuthFilter;
+  private final JwtAuthenticationFilter jwtAuthFilter;
   private final AuthenticationProvider authenticationProvider;
   private final LogoutHandler logoutHandler;
-  private final com.buylife.security.security.config.RestAuthorizationEntryPoint restAuthorizationEntryPoint;
-  private final com.buylife.security.security.config.RestfulAccessDeniedHandler restfulAccessDeniedHandler;
+  private final RestAuthorizationEntryPoint restAuthorizationEntryPoint;
+  private final RestfulAccessDeniedHandler restfulAccessDeniedHandler;
 
   @Bean
   // 添加这一行来指定扫描路径

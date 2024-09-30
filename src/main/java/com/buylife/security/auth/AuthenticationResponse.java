@@ -1,4 +1,4 @@
-package com.buylife.security.security.auth;
+package com.buylife.security.auth;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.AllArgsConstructor;

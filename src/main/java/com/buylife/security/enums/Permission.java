@@ -1,4 +1,4 @@
-package com.buylife.security.entity;
+package com.buylife.security.enums;
 
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;

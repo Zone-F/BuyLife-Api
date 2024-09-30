@@ -1,4 +1,4 @@
-package com.buylife.security.security.config;
+package com.buylife.security.config;
 
 import com.buylife.security.service.TokenService;
 import jakarta.servlet.FilterChain;

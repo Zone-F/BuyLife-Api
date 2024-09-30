@@ -1,4 +1,4 @@
-package com.buylife.security.security.config;
+package com.buylife.security.config;
 
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;

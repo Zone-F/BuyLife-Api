@@ -1,11 +1,11 @@
-package com.buylife.security.security.auth;
+package com.buylife.security.auth;
 
 import com.baomidou.mybatisplus.core.conditions.update.LambdaUpdateWrapper;
-import com.buylife.security.entity.Role;
+import com.buylife.security.enums.Role;
 import com.buylife.security.entity.Token;
-import com.buylife.security.entity.TokenType;
+import com.buylife.security.enums.TokenType;
 import com.buylife.security.entity.User;
-import com.buylife.security.security.config.JwtService;
+import com.buylife.security.config.JwtService;
 import com.buylife.security.service.TokenService;
 import com.buylife.security.service.UserService;
 import com.buylife.security.utils.Result;
