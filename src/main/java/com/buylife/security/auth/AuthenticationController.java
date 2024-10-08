@@ -1,10 +1,15 @@
 package com.buylife.security.auth;
 
+import com.buylife.common.ResponseResult;
+import com.buylife.security.entity.CreateUserDTO;
+import com.buylife.security.entity.LoginDTO;
 import com.buylife.security.utils.Result;
+import com.buylife.user.pojo.entity.Users;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -14,7 +19,7 @@ import org.springframework.web.bind.annotation.RestController;
 import java.io.IOException;
 
 @RestController
-@RequestMapping("/api/v1/auth")
+@RequestMapping("/api/auth")
 @RequiredArgsConstructor
 @Tag(name = "Authentication")
 public class AuthenticationController {
@@ -23,14 +28,14 @@ public class AuthenticationController {
 
   @PostMapping("/register")
   @Operation(summary = "注册")
-  public Result register(@RequestBody RegisterRequest request){
-    return authenticationService.register(request);
+  public ResponseResult<Boolean> register(@Valid @RequestBody CreateUserDTO user){
+    return authenticationService.register(user);
   }
 
   @PostMapping("/authenticate")
   @Operation(summary = "认证")
-  public Result authenticate(@RequestBody AuthenticationRequest request){
-    return authenticationService.authenticate(request);
+  public Result authenticate(@Valid @RequestBody LoginDTO user){
+    return authenticationService.authenticate(user);
   }
 
   @PostMapping("/refresh")

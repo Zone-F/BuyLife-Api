@@ -6,6 +6,7 @@ import com.baomidou.mybatisplus.annotation.TableLogic;
 import com.baomidou.mybatisplus.annotation.TableName;
 import java.io.Serializable;
 import java.util.Collection;
+import java.util.List;
 
 import com.buylife.security.enums.Role;
 import io.swagger.v3.oas.annotations.media.Schema;
@@ -29,9 +30,10 @@ import org.springframework.security.core.userdetails.UserDetails;
 @Accessors(chain = true)
 @TableName("t_user")
 @Schema(description = "User")
+//public class User extends  {
 public class User implements Serializable, UserDetails {
 
-    private static final long serialVersionUID = 1L;
+        private static final long serialVersionUID = 1L;
 
     @Schema(description = "id")
     @TableId(value = "id", type = IdType.AUTO)
@@ -43,9 +45,6 @@ public class User implements Serializable, UserDetails {
     @Schema(description = "password")
     private String password;
 
-    @Schema(description = "nickname")
-    private String nickname;
-
     @Schema(description = "logically delete")
     @TableLogic
     private Integer isDelete;
@@ -53,12 +52,14 @@ public class User implements Serializable, UserDetails {
     @Schema(description = "time")
     private String createTime;
 
-    private Role role = Role.USER;
-
-
     @Override
     public String getUsername() {
         return email;
+    }
+
+    @Override
+    public Collection<? extends GrantedAuthority> getAuthorities() {
+        return List.of();
     }
 
     @Override
@@ -66,10 +67,10 @@ public class User implements Serializable, UserDetails {
         return password;
     }
 
-    @Override
-    public Collection<? extends GrantedAuthority> getAuthorities() {
-        return role.getAuthorities();
-    }
+//    @Override
+//    public Collection<? extends GrantedAuthority> getAuthorities() {
+//        return role.getAuthorities();
+//    }
 
     @Override
     public boolean isAccountNonExpired() {
