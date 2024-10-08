@@ -23,8 +23,8 @@ public class ApplicationConfig {
 
   @Bean
   public UserDetailsService userDetailsService() {
-     return username -> (UserDetails) userService.findByEmail(username);
-//    return userService::findByEmail;
+//     return username -> userService.findByUsername(username);
+    return userService::findByEmail;
   }
 
   @Bean

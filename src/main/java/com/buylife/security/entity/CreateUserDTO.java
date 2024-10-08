@@ -6,11 +6,12 @@ import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
 import lombok.Data;
+import org.springframework.security.core.userdetails.UserDetails;
 
 import java.io.Serializable;
 
 @Data
-public class CreateUserDTO implements Serializable {
+public class CreateUserDTO implements Serializable{
     @Schema(description = "用户的昵称或姓名，用于登录和展示")
     @NotBlank(message = "【用户的昵称或姓名，用于登录和展示】不能为空")
     @Size(max = 50, message = "【用户名】长度不能超过50个字符")

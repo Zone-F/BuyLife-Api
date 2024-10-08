@@ -4,7 +4,6 @@ import com.buylife.common.ResponseResult;
 import com.buylife.security.entity.CreateUserDTO;
 import com.buylife.security.entity.LoginDTO;
 import com.buylife.security.utils.Result;
-import com.buylife.user.pojo.entity.Users;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.servlet.http.HttpServletRequest;
@@ -34,7 +33,7 @@ public class AuthenticationController {
 
   @PostMapping("/authenticate")
   @Operation(summary = "认证")
-  public Result authenticate(@Valid @RequestBody LoginDTO user){
+  public ResponseResult authenticate(@Valid @RequestBody LoginDTO user){
     return authenticationService.authenticate(user);
   }
 

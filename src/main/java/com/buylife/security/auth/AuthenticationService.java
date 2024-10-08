@@ -11,6 +11,7 @@ import com.buylife.security.config.JwtService;
 import com.buylife.security.service.TokenService;
 import com.buylife.security.service.UserService;
 import com.buylife.security.utils.Result;
+import com.buylife.user.pojo.entity.Users;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.validation.Valid;
@@ -44,7 +45,11 @@ public class AuthenticationService {
     public ResponseResult<Boolean> register(CreateUserDTO request) {
 
         // 判断用户是否存在
-        var oldUser = userService.findByEmail(request.getEmail());
+        var oldEmail = userService.findByEmail(request.getEmail());
+        if (oldEmail != null) {
+            return ResponseResult.fail("邮箱已存在");
+        }
+        var oldUser = userService.findByUsername(request.getUsername());
         if (oldUser != null) {
             return ResponseResult.fail("用户名已存在");
         }
@@ -56,23 +61,25 @@ public class AuthenticationService {
         return ResponseResult.success("注册成功！");
     }
 
-    public Result authenticate(@Valid LoginDTO request) {
+    public ResponseResult authenticate(@Valid LoginDTO request) {
+//        User userDetails = userService.findByUsername(request.getUsername());
+//        if (userDetails == null || !passwordEncoder.matches(request.getPassword(), userDetails.getPassword())) {
+//            return ResponseResult.fail("用户名或密码不正确！");
+//        }
+//        Authentication authenticate = authenticationManager.authenticate(
+//            new UsernamePasswordAuthenticationToken(request.getUsername(), request.getPassword())
+//        );
+//        var user = userService.findByUsername(request.getUsername());
 
         UserDetails userDetails = userDetailsService.loadUserByUsername(request.getUsername());
-
-        if (userDetails == null || !passwordEncoder.matches(request.getPassword(), userDetails.getPassword())) {
-            return Result.error("用户名或密码不正确！");
+        if (userDetails == null || !passwordEncoder.matches(request.getPassword(), userDetails.getPassword())){
+            return ResponseResult.fail("用户名或密码不正确！");
         }
 
         Authentication authenticate = authenticationManager.authenticate(
-                new UsernamePasswordAuthenticationToken(request.getEmail(), request.getPassword())
+            new UsernamePasswordAuthenticationToken(request.getUsername(), request.getPassword())
         );
-        // TODO 考虑不从数据库中查数据
-
         var user = (User) authenticate.getPrincipal();
-        // var user = userService.findByEmail(request.getEmail());
-        // var user = userDetailsService.loadUserByUsername(request.getEmail());
-
 
         var jwtToken = jwtService.generateToken(user);
         var refreshToken = jwtService.generateRefreshToken(user);
@@ -82,7 +89,7 @@ public class AuthenticationService {
                 .accessToken(jwtToken)
                 .refreshToken(refreshToken)
                 .build();
-        return Result.success("认证成功！", response);
+        return ResponseResult.success("认证成功！", response);
 
     }
 

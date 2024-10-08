@@ -13,6 +13,7 @@ import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
+import org.springframework.security.core.userdetails.UserDetails;
 
 /**
  * 用户信息表
@@ -23,7 +24,7 @@ import lombok.EqualsAndHashCode;
 @TableName("users")
 @Schema(name = "Users", description = "用户信息表")
 @Data
-public class Users extends base {
+public class Users extends base{
 
 
 //    @Schema(description = "用户的昵称或姓名，用于登录和展示")

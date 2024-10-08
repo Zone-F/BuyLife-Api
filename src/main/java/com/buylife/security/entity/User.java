@@ -4,11 +4,15 @@ import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableLogic;
 import com.baomidou.mybatisplus.annotation.TableName;
+
+import java.io.Serial;
 import java.io.Serializable;
 import java.util.Collection;
+import java.util.Date;
 import java.util.List;
 
 import com.buylife.security.enums.Role;
+import com.buylife.user.pojo.entity.Users;
 import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.*;
 import lombok.experimental.Accessors;
@@ -24,38 +28,31 @@ import org.springframework.security.core.userdetails.UserDetails;
  * @since 2023-06-03
  */
 @Data
-@Builder
-@NoArgsConstructor
-@AllArgsConstructor
-@Accessors(chain = true)
-@TableName("t_user")
-@Schema(description = "User")
+//@Builder
+//@NoArgsConstructor
+//@AllArgsConstructor
+//@Accessors(chain = true)
+@TableName("users")
+@Schema(name = "Users", description = "用户信息表")
 //public class User extends  {
 public class User implements Serializable, UserDetails {
 
-        private static final long serialVersionUID = 1L;
+    @Serial
+    private static final long serialVersionUID = 1L;
 
     @Schema(description = "id")
     @TableId(value = "id", type = IdType.AUTO)
     private Long id;
 
-    @Schema(description = "email")
+    private String username;
+
     private String email;
 
-    @Schema(description = "password")
     private String password;
 
-    @Schema(description = "logically delete")
-    @TableLogic
-    private Integer isDelete;
+    private Date createTime;
 
-    @Schema(description = "time")
-    private String createTime;
-
-    @Override
-    public String getUsername() {
-        return email;
-    }
+    private Date updateTime;
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
@@ -65,6 +62,11 @@ public class User implements Serializable, UserDetails {
     @Override
     public String getPassword() {
         return password;
+    }
+
+    @Override
+    public String getUsername() {
+        return email;
     }
 
 //    @Override

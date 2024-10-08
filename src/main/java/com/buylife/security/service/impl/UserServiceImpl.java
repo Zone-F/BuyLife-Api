@@ -2,6 +2,7 @@ package com.buylife.security.service.impl;
 
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.buylife.security.entity.CreateUserDTO;
+import com.buylife.security.entity.User;
 import com.buylife.security.mapper.UserMapper;
 import com.buylife.security.service.UserService;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
@@ -22,28 +23,29 @@ import org.springframework.transaction.annotation.Transactional;
 @RequiredArgsConstructor
 @Transactional
 @Service
-public class UserServiceImpl extends ServiceImpl<UserMapper, Users> implements UserService {
+public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements UserService {
 
     private final UserMapper userMapper;
-//    public String findByEmail(String email) {
-//        QueryWrapper<Users> queryWrapper = new QueryWrapper<>();
-//        Users user = new Users();  // 创建 Users 实例
-//        user.setEmail(email);      // 设置 email 属性
-//
-//        return this.getOne(queryWrapper.eq("email", user.getEmail()));
-//    }
 
     @Override
-    public Users findByEmail(String email) {
+    public User findByEmail(String email) {
         return userMapper.selectOne(
-                new LambdaQueryWrapper<Users>()
-                        .eq(Users::getEmail, email)
+                new LambdaQueryWrapper<User>()
+                        .eq(User::getEmail, email)
+        );
+    }
+
+    @Override
+    public User findByUsername(String username) {
+        return userMapper.selectOne(
+                new LambdaQueryWrapper<User>()
+                        .eq(User::getUsername, username)
         );
     }
 
     public boolean insert(CreateUserDTO createUserDTO) {
 
-        Users user = new Users();
+        User user = new User();
         BeanUtils.copyProperties(createUserDTO, user);
 
         return save(user);
