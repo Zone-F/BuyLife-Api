@@ -1,4 +1,4 @@
-package com.agileboot.domain.buylife.checkIn.command;
+package com.agileboot.domain.buylife.checkInTask.command;
 
 
 import lombok.Data;

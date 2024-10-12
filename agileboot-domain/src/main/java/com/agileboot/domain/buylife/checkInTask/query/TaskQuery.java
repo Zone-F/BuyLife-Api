@@ -1,7 +1,7 @@
-package com.agileboot.domain.buylife.checkIn.query;
+package com.agileboot.domain.buylife.checkInTask.query;
 
 import com.agileboot.common.core.page.AbstractPageQuery;
-import com.agileboot.domain.buylife.checkIn.db.TaskEntity;
+import com.agileboot.domain.buylife.checkInTask.db.TaskEntity;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
@@ -12,12 +12,12 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class TaskQuery extends AbstractPageQuery<TaskEntity> {
 
-    private String userId;
+    private String creatorId;
 
     @Override
     public QueryWrapper<TaskEntity> addQueryCondition() {
         return new QueryWrapper<TaskEntity>()
                 .eq("n.deleted", 0)
-                .eq("n.user_id", userId);
+                .eq("n.creator_id", creatorId);
     }
 }

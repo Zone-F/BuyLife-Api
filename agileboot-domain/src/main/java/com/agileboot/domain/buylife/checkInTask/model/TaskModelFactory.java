@@ -1,9 +1,9 @@
-package com.agileboot.domain.buylife.checkIn.model;
+package com.agileboot.domain.buylife.checkInTask.model;
 
 import com.agileboot.common.exception.ApiException;
 import com.agileboot.common.exception.error.ErrorCode;
-import com.agileboot.domain.buylife.checkIn.db.TaskEntity;
-import com.agileboot.domain.buylife.checkIn.db.TaskService;
+import com.agileboot.domain.buylife.checkInTask.db.TaskEntity;
+import com.agileboot.domain.buylife.checkInTask.db.TaskService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
 
@@ -16,7 +16,7 @@ public class TaskModelFactory {
         TaskEntity byId = taskService.getById(id);
 
         if (byId == null) {
-            throw new ApiException(ErrorCode.Business.COMMON_OBJECT_NOT_FOUND, id, "通知公告");
+            throw new ApiException(ErrorCode.Business.COMMON_OBJECT_NOT_FOUND, id, "打卡任务");
         }
 
         return new TaskModel(byId);

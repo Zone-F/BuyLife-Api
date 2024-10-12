@@ -1,4 +1,4 @@
-package com.agileboot.domain.buylife.checkIn.db;
+package com.agileboot.domain.buylife.checkInTask.db;
 
 import com.baomidou.mybatisplus.core.conditions.Wrapper;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;

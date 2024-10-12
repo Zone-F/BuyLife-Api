@@ -1,6 +1,6 @@
-package com.agileboot.domain.buylife.checkIn.dto;
+package com.agileboot.domain.buylife.checkInTask.dto;
 
-import com.agileboot.domain.buylife.checkIn.db.TaskEntity;
+import com.agileboot.domain.buylife.checkInTask.db.TaskEntity;
 
 import lombok.Data;
 
@@ -8,6 +8,7 @@ import java.util.Date;
 
 @Data
 public class TaskDTO {
+
     public TaskDTO(TaskEntity entity) {
         if (entity != null) {
             this.id = entity.getId() + "";
@@ -17,13 +18,10 @@ public class TaskDTO {
             this.status = entity.getStatus();
             this.createTime = entity.getCreateTime();
             this.repeatCycle = entity.getRepeatCycle();
-            this.userId = entity.getUserId();
         }
     }
 
     private String id;
-
-    private Integer userId;
 
     private String title;
 

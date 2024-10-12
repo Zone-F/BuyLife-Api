@@ -1,4 +1,4 @@
-package com.agileboot.domain.buylife.checkIn.db;
+package com.agileboot.domain.buylife.checkInTask.db;
 
 import com.agileboot.common.core.base.BaseEntity;
 import com.baomidou.mybatisplus.annotation.IdType;

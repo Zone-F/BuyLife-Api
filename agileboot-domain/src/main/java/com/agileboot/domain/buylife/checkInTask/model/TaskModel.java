@@ -1,11 +1,12 @@
-package com.agileboot.domain.buylife.checkIn.model;
+package com.agileboot.domain.buylife.checkInTask.model;
 
 import cn.hutool.core.bean.BeanUtil;
-import com.agileboot.domain.buylife.checkIn.command.TaskAddCommand;
-import com.agileboot.domain.buylife.checkIn.command.TaskUpdateCommand;
-import com.agileboot.domain.buylife.checkIn.db.TaskEntity;
-import com.agileboot.domain.system.notice.command.NoticeAddCommand;
-import com.agileboot.domain.system.notice.command.NoticeUpdateCommand;
+import com.agileboot.common.enums.BasicEnumUtil;
+import com.agileboot.common.enums.common.RepeatCycleEnum;
+import com.agileboot.common.enums.common.StatusEnum;
+import com.agileboot.domain.buylife.checkInTask.command.TaskAddCommand;
+import com.agileboot.domain.buylife.checkInTask.command.TaskUpdateCommand;
+import com.agileboot.domain.buylife.checkInTask.db.TaskEntity;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
@@ -30,5 +31,11 @@ public class TaskModel extends TaskEntity {
         if (command != null) {
             loadAddCommand(command);
         }
+    }
+
+    public void checkFields() {
+        BasicEnumUtil.fromValue(RepeatCycleEnum.class, getRepeatCycle());
+
+        BasicEnumUtil.fromValue(StatusEnum.class, getStatus());
     }
 }

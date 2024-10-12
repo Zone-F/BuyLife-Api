@@ -25,7 +25,7 @@ import java.util.List;
 @RequestMapping("/check/task")
 @Validated
 @RequiredArgsConstructor
-public class CheckInTaskController extends BaseController {
+public class CheckInController extends BaseController {
     private final CheckInTaskApplicationService checkInTaskApplicationService;
 
     /**

@@ -1,4 +1,4 @@
-package com.agileboot.domain.buylife.checkIn.command;
+package com.agileboot.domain.buylife.checkInTask.command;
 
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Positive;
