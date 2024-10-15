@@ -204,6 +204,9 @@ public enum ErrorCode implements ErrorCodeInterface {
 
         USER_ADMIN_CAN_NOT_BE_MODIFY(10515, "管理员不允许做任何修改", "Business.USER_ADMIN_CAN_NOT_BE_MODIFY"),
 
+        // ---------------------------------- BUYLIFE -----------------------------------------------
+        BUYLIFE_CHECKIN_CHECKED_TODAY(20000, "今日已签到", "Business.BUYLIFE_CHECKIN_CHECKED_TODAY"),
+
         ;
 
 

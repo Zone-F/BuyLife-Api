@@ -31,7 +31,7 @@ public class CheckInTaskController extends BaseController {
     /**
      * 获取通知公告列表
      */
-    @Operation(summary = "公告列表")
+    @Operation(summary = "打卡记录")
     @GetMapping
     public ResponseDTO<PageDTO<TaskDTO>> list(TaskQuery query) {
         PageDTO<TaskDTO> pageDTO = checkInTaskApplicationService.getTaskList(query);

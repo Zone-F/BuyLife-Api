@@ -5,11 +5,11 @@ import com.agileboot.common.core.base.BaseController;
 import com.agileboot.common.core.dto.ResponseDTO;
 import com.agileboot.common.core.page.PageDTO;
 import com.agileboot.common.enums.common.BusinessTypeEnum;
-import com.agileboot.domain.buylife.checkInTask.CheckInTaskApplicationService;
-import com.agileboot.domain.buylife.checkInTask.command.TaskAddCommand;
-import com.agileboot.domain.buylife.checkInTask.command.TaskUpdateCommand;
-import com.agileboot.domain.buylife.checkInTask.dto.TaskDTO;
-import com.agileboot.domain.buylife.checkInTask.query.TaskQuery;
+import com.agileboot.domain.buylife.checkIn.CheckInApplicationService;
+import com.agileboot.domain.buylife.checkIn.command.CheckInAddCommand;
+import com.agileboot.domain.buylife.checkIn.command.CheckInUpdateCommand;
+import com.agileboot.domain.buylife.checkIn.dto.CheckInDTO;
+import com.agileboot.domain.buylife.checkIn.query.CheckInQuery;
 import com.agileboot.domain.common.command.BulkOperationCommand;
 import com.agileboot.infrastructure.annotations.unrepeatable.Unrepeatable;
 import io.swagger.v3.oas.annotations.Operation;
@@ -20,21 +20,21 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
-@Tag(name = "打卡任务API", description = "打卡任务相关的增删查改")
+@Tag(name = "打卡API", description = "打卡相关的增删查改")
 @RestController
-@RequestMapping("/check/task")
+@RequestMapping("/check")
 @Validated
 @RequiredArgsConstructor
 public class CheckInController extends BaseController {
-    private final CheckInTaskApplicationService checkInTaskApplicationService;
+    private final CheckInApplicationService checkInApplicationService;
 
     /**
-     * 获取通知公告列表
+     * 获取打卡记录列表
      */
-    @Operation(summary = "公告列表")
+    @Operation(summary = "打卡记录列表")
     @GetMapping
-    public ResponseDTO<PageDTO<TaskDTO>> list(TaskQuery query) {
-        PageDTO<TaskDTO> pageDTO = checkInTaskApplicationService.getTaskList(query);
+    public ResponseDTO<PageDTO<CheckInDTO>> list(CheckInQuery query) {
+        PageDTO<CheckInDTO> pageDTO = checkInApplicationService.getCheckInList(query);
         return ResponseDTO.ok(pageDTO);
     }
 
@@ -42,12 +42,12 @@ public class CheckInController extends BaseController {
     /**
      * 新增打卡任务
      */
-    @Operation(summary = "添加打卡任务")
+    @Operation(summary = "打卡")
     @Unrepeatable(interval = 60, checkType = Unrepeatable.CheckType.SYSTEM_USER)
-    @AccessLog(title = "打卡任务", businessType = BusinessTypeEnum.ADD)
+    @AccessLog(title = "打卡", businessType = BusinessTypeEnum.ADD)
     @PostMapping
-    public ResponseDTO<Void> add(@RequestBody TaskAddCommand addCommand) {
-        checkInTaskApplicationService.addTask(addCommand);
+    public ResponseDTO<Void> add(@RequestBody CheckInAddCommand addCommand) {
+        checkInApplicationService.addTask(addCommand);
         return ResponseDTO.ok();
     }
 
@@ -56,21 +56,21 @@ public class CheckInController extends BaseController {
      */
     @Operation(summary = "修改打卡任务")
     @AccessLog(title = "打卡任务", businessType = BusinessTypeEnum.MODIFY)
-    @PutMapping("/{taskId}")
-    public ResponseDTO<Void> edit(@PathVariable Long taskId, @RequestBody TaskUpdateCommand updateCommand) {
-        updateCommand.setId(taskId);
-        checkInTaskApplicationService.updateTask(updateCommand);
+    @PutMapping("/{checkInId}")
+    public ResponseDTO<Void> edit(@PathVariable Long checkInId, @RequestBody CheckInUpdateCommand updateCommand) {
+        updateCommand.setId(checkInId);
+        checkInApplicationService.updateTask(updateCommand);
         return ResponseDTO.ok();
     }
 
     /**
      * 删除打卡任务
      */
-    @Operation(summary = "删除打卡任务")
-    @AccessLog(title = "打卡任务", businessType = BusinessTypeEnum.DELETE)
+    @Operation(summary = "删除打卡记录")
+    @AccessLog(title = "打卡记录", businessType = BusinessTypeEnum.DELETE)
     @DeleteMapping
     public ResponseDTO<Void> remove(@RequestParam List<Integer> ids) {
-        checkInTaskApplicationService.deleteTask(new BulkOperationCommand<>(ids));
+        checkInApplicationService.deleteTask(new BulkOperationCommand<>(ids));
         return ResponseDTO.ok();
     }
 
